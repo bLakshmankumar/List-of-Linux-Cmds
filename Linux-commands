@@ -1,0 +1,423 @@
+Linux Commands Cheat sheet
+---------------------------
+if you wanna copy a file from ec2 to local machine -: (execute this command on your local linux machine)
+--------------------------------------------------------------------------------------------------------
+sudo sftp -i /home/oem/Downloads/.pem ec2-user@ip-of-ec2-server(pub) >  then sftp> ls(do ls), and go to your file path and do (get kibana.yml(filename).
+It'll download to local machine.
+
+init 0 (or) systemctl poweroff                       - It'll power of the system.
+
+init 6 (or) systemctl reboot                         - It'll reboot the system
+
+date                                                 - To know the system date, year and time
+
+date +%d-%m-%y                                       - To know the exact date month and year
+
+cal                                                  - To know the present month calander
+ 
+"cal 11 2018"                                        - To know the specific month and year calender                                                                   
+"cal -3"                                             - To print last 3 months clander
+
+cat > file1                                          - To create a file then add some content and save with (contl +c). 
+
+cat filename(file1)                                  - To print the data inside a file1.
+
+cat -n filename(file1)                               - To Print a file with line numbers.
+
+ls (or)  ls -ltr   (or) ls -al                        - It'll list files and directories.
+
+ls -a                                                 - It'll show all hideden files/directories
+
+ls *.txt (or) .sh                                     - It'll list only filtered files. ( for ex i wanna filter shell script files ( ls * .sh) -: it'll list only .sh files/extension with .sh
+
+ls -d                                                 - It'll print the current directory.
+
+ls -ld  dirname/*                                     - It'll list the directory properties/details like when it'll create & etc.
+
+ls -i                                                 - To display all files including inode number.
+
+[ i-node is the address of location where file attributes are stored. File attributes includes -: The size of the file, The num of links to the file, Owner name, group name, creation time, last modified time].
+
+ls -ltri                                              - To get all the information of the directories and files on that specific path includes inode num.
+
+ls -l /etc | wc -l                                     - to get the file and folder count inside a etc directory.
+
+pwd                                                   - It'll print the present working directory.
+
+who am i                                              - It'll print the which user we are login.
+
+who                                                   -  It'll print all users list who all are login.
+
+w                                                     - It'll print list all user list and load avarage, users list, when this system is up, when the user  is login, how much he is using & etc.
+
+uptime                                                - It'll print the system uptime(when this system was started) and what is the current load avarage.
+
+uname -a                                               - It'll print OS name(Linux/Unix), System name, Kernel Version, OS Type, type of Hardware(64 bit/32Bit).
+
+touch   filename                                       - we can create empty files, "touch file{1..200}.txt"    - we can create 200 files with this command like wise we create n number of files.
+
+touch dirname/filename                                 - It'll create a files on specific directory/filename{1..10}.txt - it'll create 10 files inside the directory.
+
+ls -ltr dirname/*                                      - It'll list all the files inside that directory
+
+rm -r dirname/*                                        - It'll remove all files inside that directory
+
+cp sourcepath and destinationpath                      - we copy files from one directory to another directory.
+
+cp -R source dir path & Dest dir path                  - It'll copy the directory from one directory to another directory.
+
+mv filename(f1)  newfilename(m1)                       - It'll change the file name (ex it'll change File name F1 to M1)
+ 
+mkdir   Directory name                                 - It'll create a directory 
+
+mkdir -p 1/2/3/4/a/b/c                                  - It'll create a multiple directories under a parent directory   (-p it's a parent directory)
+
+mkdir -p heros/{ntr,charan,pawan,nikhil}/{jan,feb,mar,apr,may,jun,july,aug,sep,oct,nov,dec}_202{2,3,4}  -:
+
+> it'll create a heros directory, then inside heros dir it'll create a each hero dir and inside each hero dir it'll create their shedule calender year dir with years. here we try to create a directory for each hero year shedule. execute this command and verify with tree heros command and we can able to see each hero seperate directories for one year easily. 
+
+> now inside every directory i wanna create a file like shedule1.txt shedule2.txt on each hero month directories and each month has 30-31 days so each month i need to create a 30-31 files like that i need to create for 1 year so how can we create those many files for each hero with a single command.
+
+> How can we do is just add the /schedule_{1..31}.txt   -: it'll add the each day file to each hero monthly shedule directory 
+
+> touch heros/{ntr,charan,pawan,nikhil}/{jan,feb,mar,apr,may,jun,july,aug,sep,oct,nov,dec}_202{2,3,4}/schedule_{1..31}.txt -: the directories are already available so now we need to create a files inside each hero month dir for that we need to use the touch command to create a files inside those directories. let's execute this above command to create a files inside a each dir and verify with tree heros command.
+
+tree heros                                              - To list all directories and files inside a specific directory.
+
+cd directory name                                       - We can change from one directory to another directory.
+
+cd~                                                     - Brings you to the home directory
+
+cd ..                                                   - Brings you to the previous directory
+
+cd/                                                     - Takes you to the entire system’s root directory
+
+du -h  filename                                         - To find the file size
+
+rmdir                                                   - It'll not delete the directory directly first it'll remind if any data available inside that directory. then deletion of the files only it'll delete the directory.
+
+free                                                    - It'll print the memory and swap resource information.
+
+top / htop                                              - shows a real-time view of running processes in Linux and displays kernel-managed tasks.
+
+head                                                    - Displays the beginning of the file
+
+tail                                                    - Displays the last part of the file
+
+cat                                                     -  Concatenate files and print on the standard output.
+
+more                                                    -  Displays the content in pager form and is used to view the text in the terminal window one page or screen at a time.
+
+less                                                    -  Displays the content in pager form and allows backward and single line movement.
+
+cat /proc/cpuinfo                                       - It prints the Cpu info.
+
+grep  "word"  "Filename"                                - search for a string in groups of files (To print any line from a file that contains a specific pattern of characters, in our case phoenix in the file sample2 ( grep phoenix sample2)
+
+find                                                    - Find command used to search files, strings, and directories.
+
+find / -type d -name Dirname                             - Find Directories Using Name
+
+find . -type f -name "*.sh"(extention)                   -  Find all PHP Files in the Directory
+
+find . -type f -perm 0777 -print                         - Find Files With 777 Permissions.
+
+find / -type f ! -perm 777                               - Find Files Without 777 Permissions
+
+find / -mtime 50                                         - Find Last 50 Days Modified Files
+
+find / -type f -size +100M -exec rm -f {} \;             -  Find and Delete 100MB Files.
+
+# find / -type f -name *.mp3 -size +10M -exec rm {} \;   - Find Specific Files and Delete
+
+users                                                    - Users command displays currently logged-in users. This command doesn’t have other parameters other than help and version.
+
+SSH Command (Secure Shell)                               - SSH command is used to login into the remote host. For example, the below ssh command will connect to the remote host (192.168.50.2) using the user as Narad.(ssh narad@192.168.50.2)
+
+Sort command                                             - The sort command is used to sort lines of text files in ascending order. with -r options will sort in descending order.
+
+Ftp or sftp Command()                                    - ftp or sftp command is used to connect to remote ftp host. ftp is (file transfer protocol) and sftp is (secure file transfer protocol). For example, the below commands will connect to ftp host (192.168.50.2).
+ex  (# ftp 192.168.50.2)
+    (# sftp 192.168.50.2)
+	
+Systemctl command                                        - Systemctl command is a systemd management tool that is used to manage services, check running statuses, start and enable services and work with the configuration files.
+ex  # systemctl start httpd.service
+     # systemctl enable httpd.service
+     # systemctl status httpd.service
+
+Tar Command                                              - The tar command is used to compress files and folders in Linux. For example, the below command will create an archive for /home directory with the file name archive-name.tar.
+ex # tar -cvf archive-name.tar /home
+
+# tar -xvf archive-name.tar                              - To extract the tar archive file use the option as follows.
+
+ps command                                               - The ps command displays processes running in the system. The below example show the init to process only.
+ex # ps -ef | grep init
+root  1  0  0 07:53 ?  00:00:04 /sbin/init
+root  7508 6825 0 11:48 pts/1 00:00:00 grep init
+
+kill command                                              -  Use the kill command to terminate the process. First, find process id with ps command
+
+fdisk -l                                                  - It'll list the attached disk resources information to the servers
+
+ip -brief address                                         -  To list interfaces with brief network layer info, use:
+
+ip route                                                  - To display the routing table, use
+
+ip addr add/del ip/mask dev interface                      - To add/delete an ip address to an interface, use
+
+curl                                                       -  transferring data using various network protocols. (supports more protocols than wget)
+ 
+systemctl                                                  -  Managing Services (Daemons).
+
+ps                                                          - it'll print the status of processes running for user.
+
+ps PID                                                      - gives the status of a perticular process.
+
+pidof "processname"                                        - Gives the process id of a process.
+
+kill PID                                                   - It'll kill the process.
+
+nice                                                       - Starts a process with given priority.
+
+renice                                                     - change an priority for already running process. (sudo renice 20 -p 3844)   (it'll change the old nice value and replace with new nice value)
+
+df                                                         - Gives free hard disk space on our system.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Text Editors 
+----------------
+
+vi                                                        -  we create/edit the text file    - Saving Patter ( esc,shift:, w(save),q!)(esc,shift:,w,q!)
+  
+vim                                                       -  we create/edit the text file    - Saving Patter ( esc,shift:, w(save),q!)(esc,shift:,w,q!)
+
+nano                                                      -  we create/edit the text file    - Saving Patter (cntl,x,y,enter)
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Troubleshooting commands
+-----------------------------------
+
+Hostname                                              - To view the hostname (domain and IP address) of the machine and to set the hostname.
+
+Ping  (ex-: goohle.com)                               - To check if the remote server is reachable or not.
+
+ifconfig                                              - It'll print details of active network interfaces.
+
+netstat                                               - It displays network connections, routing tables, interface statistics. ‘ss’ is the replacement of netstat command which is used to get more information.
+    
+Traceroute                                            - It is a network troubleshooting utility that is used to find the number of hops required for a particular packet to reach the destination.
+
+Tracepath                                             - It is the same as traceroute with a difference that it does not require root privileges.
+
+Dig                                                   - This command is used to query the DNS name servers for any task related to the DNS lookup.
+
+nslookup                                              - To find DNS related query.
+
+Route                                                 - It shows the details of the route table and manipulates the IP routing table.
+
+mtr                                                   - This command combines ping and track path into a single command.
+
+Ifplugstatus                                          - This command tells us whether the network cable is plugged in or not.
+
+sudo nano /etc/default/jenkins                        - we can change the jenkins port number
+
+cat /etc/shells                                       - we can chekck the all shell types
+
+last                                                  - The last command in Linux is used to display the list of all the users logged in and out since the                                                         file /var/log/wtmp was created.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User permission commands
+-----------------------------------
+
+stat -c "%a" file_name                       - we can check the file’s permissions in the numeric notation using the stat command
+
+useradd username                             - To create a user
+
+useradd -u UID username                      - To createa user with specific user ID ( useradd -u 1025 rahul) 
+
+useradd -c "security dep" username           - We can create user with comment it'll help to identify the user department and purpose of cretaing thaat user.
+
+passwd                                       - To set a password to user
+ 
+passwd -d 0(days) username                   - we can set the passwd  expairy date 
+
+useradd -e 2019-02-14 username               - Create a user with expairy date.
+
+useradd -e 2022-10-15 -f 22 username         - user with passwd expairy date( this user passwd will work in 22 days only)
+
+chage -l username                            - we can check the user complete datails (user account expairy date, passwd expairy date & etc)
+
+groupadd groupname                           - To create a group
+
+cat /etc/passwd                              - It has the all user details
+
+cat /etc/shadow                              - It has the user password details
+
+cat /etc/groups                              - It has group details
+
+usermod -a (addition) -G groupname username  - We can add existing user to group
+
+useradd -G newgroupname username             - we adding a user to existing group while we create a new user.
+
+useradd -G gupname,grpname usrname           - we can add user in multiple groups
+
+passwd -l username                           - It'll lock the user
+
+passwd -u username                           - It'll unlock the user
+
+chown [user_name] [file_name]                -  To change the file ownership use the chown command.
+
+chgrp [group_name] [file_name]               - To change the group ownership use this command.
+
+Usermod > we can change the user account details -:
+-------------------------------------------------
+usermod -d /data/projrct1 username           - changing the home directory.
+usermod -d /data/projrct1 -m username        - changing the home directory and move all content to new directory
+usermod -e 2023-05-25 username               - setting the account expairy date.
+usermod -l [newusername] [oldusername]       -  It'll rename the user.
+
+chage -l username                            - we can get all the account details of a user.
+
+userdel -r username                          - It'll remove the user. if the user available in other groups it'll show an output.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Group management-:
+------------------
+groups                                       - checking the group info for users.
+groups [username]                            - checking the groups of any user.
+...................................................................................
+groupadd-:
+----------
+groupadd [group_name]                         - To create a new group.
+cat /etc/group                                - To check the group details.
+-------------------------------------------------------------------------------------
+gpasswd-:
+---------
+gpasswd [group name]                          - To set a password to a group.
+gpasswd -a [username] [group name]            - To add a user into the group.
+gpasswd -a [user1,user2] [group name]         - to add multiple users into a group.
+gpasswd -d [username]  [group name]           - To remove a user from group.
+gpasswd -d [user1,user2] [group name]         - To remove multiple users from group. 
+groupdel [groupname]                          - To delete a group.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+pr -n filename                               - it'll print the file contant with numbers
+...................................................................................................................................................................................................................................................................................................................................................................
+
+Redirections in linux
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1)  Output redirection    (The > & >> symbol used for Output redirection)
+---------------------------
+
+    ls -al > filename(where to redirect)  - this way we can redirect the output of a command (note -: don't use for same file for two directions bcs it'll override the file and existing data will be removed) 
+    but if you wanna add more contant  in the same file without override we should use (>>) 
+
+   example  echo hello great learner >> listener (this way we can redirect the file without override the existing data)
+----------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ 2) Input Redirections     ( The < Symbol used for Input redirection)
+ 
+      In Linux / windows everything treated as a file, eaither regular file or directory or Devices 
+	  In File Descripters -: Every File has associated number called FD 
+	  Whenever we  Execute a program/command on terminal 3 files are always open. They are 
+                     
+ 	1) standard input (FD0)   2) standard Output (FD1)    3) standard Error (FD2) (these files are present whenever program is run)
+     
+Error redirection -: error redirection routing the errors to a specific file otherthan Display
+-----------------
+
+Examples -: i execute a command called  (telnet localhost ) - we get an error but i don't want to display that error on display, i just wanna display the error on specific error file. How?
+
+ solution -:  talent localhost 2> myerrorfile
+ 
+                      now we can verify with cat command (cat myerrorfile) the error output will move to this error file only 
+
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ LINUX WITH PIPE ( | ) Symbol  -: 
+ -----------------------------------------
+ 
+ The symbol "|" denotes pipe.
+ Use pipes to run two commands consecutively.
+ Helps in creating powerfull commands.     
+ 
+ for ex i wanna see contant of last lines in a file how?   By using pipeline symbol to get required result
+ 
+                  # cat filename | less or | pg or | more 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  LINUX WITH Grep Command -: Syntax (grep word name)
+-----------------------------------------
+
+when we execute a grep command it'll scan the file and present relevent result in a format we want.
+
+grep command we are using for find the required words in file
+
+examples for grep command -:
+-------------------------------------
+ i have a file with list of fruits o this file i wanna list only avocado fruits so how can i listout ?
+ 
+ Syntax -:  cat filename | grep word          ( once we execute this command it'll print our desired result)
+            cat fruits | grep -v avocado      ( it'll print all lines except avocado)   ( simply it'll skip the matching words)
+	    grep -n  word filename            ( It'll print the word with line numbers)
+            cat fruits | grep -i avocado      ( it'll print matching words of avocado)
+            cat fruits | grep -c avocado      ( it'll print  count of matching words)
+	    cat fruits | grep -n avocado      ( it'll print matching words with line numbers) 
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ LINUX WITH sort Command -:  (Syntax sort filename)
+ --------------------------------------
+ sort command ( sort command we are using for print the result in alphabetical order)
+ 
+            sort -r filename           - it'll print the result from last to first.
+	    sort -n filename           - it'll sort the result numarically.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LINUX WITH AWKCommand -:  (Syntax-:  awk options 'selection _criteria {action }' input-file > output-file)
+-------------------------------------------------------------------------------------------------------------------------------------
+
+awk                                     - awk allows the users to use variables, numeric functions, string functions, and logical operators.
+-------
+awk operations                          - first it'll scan the file line by line and spilts each input line into fields and compares input line/ fields to pattern, finally it performs the action on matched lines.
+
+Options:  
+-----------
+
+       -f  program-file : Reads the AWK program source from the file program-file, instead of from the  first command line argument.
+                                                   
+       -F fs            : Use fs for the input field separator.
+
+AWK COMMMANDS PATTERS	-:												   
+-----------------------------------------													 
+awk '{print}' file name                            - default syntax of awk command.
+awk '/manager/ {print}' employee.txt               - Print the lines which match the given pattern. 								 
+awk '{print $1,$4}' employee.txt                   - Splitting a Line Into Fields.
+awk '{print NR,$0}' employee.txt                   - Use of NR built-in variables (Display Line Number)
+awk '{print $1,$NF}' employee.txt                  - Use of NF built-in variables (Display Last Field)  
+awk 'NR==3, NR==6 {print NR,$0}' employee.txt      - Another use of NR built-in variables (Display Line From 3 to 6) 
+awk '{print NR "- " $1 }' Filename                 - To print the first item along with the row number(NR) separated with ” – “ from each line in that file
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+SED COMMMANDS PATTERS	-:
+
+sed '30,40 s/version/story/g' filename              - Replacing words or characters inside a range
+sed -i'.orig' 's/this/that/gi' filename             - In-place editing and backing up original file
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+How do you find all files that were modified in the last 7 days ?  :  find /path/to/directory -mtime -7
+How do you find files based on their permissions ? 	 	   :  find /path/to/directory -perm 644
+How do you create a symbolic link to a file ?	        	   :  ln -s /path/to/original /path/to/link
+How do you check the list of installed packages on a Debian-based system ? : dpkg -l
+How to Uninstall a Package on a Debian-Based System ? 	 	   : sudo apt remove package_name [This command will remove the specified package but will keep the configuration files intact] (OR) sudo apt purge package_name (This command will remove the package and its associated configuration files).
+How to Check the List of Installed Packages on a Redhat-Based System ? 
+   List All Installed Packages using "yum"
+      > yum list installed
+   List All Installed Packages using "dnf" (The dnf command is the default package manager for newer versions of Redhat-based systems (RHEL 8 and later)
+      > dnf list installed
+   List All Installed Packages using "rpm"
+      > rpm -qa --info (This command will list all installed packages along with detailed information about each package)
